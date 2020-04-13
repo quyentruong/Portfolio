@@ -11,6 +11,9 @@
           empty-icon="mdi-emoticon-outline"
           full-icon="mdi-emoticon"
           readonly
+          color="blue lighten-1"
+          background-color="grey lighten-1"
+          dense
         />
       </v-col>
     </v-row>

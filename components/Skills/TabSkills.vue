@@ -1,16 +1,16 @@
 <template>
-  <v-card width="600" dark>
+  <v-card width="500">
     <v-card-title>Skills</v-card-title>
+    <v-tabs
+      v-model="tab"
+      show-arrows
+    >
+      <v-tab v-for="item in items" :key="item.tab">
+        {{ item.tab }}
+      </v-tab>
+    </v-tabs>
     <v-card-text>
-      <v-tabs
-        v-model="tab"
-        dark
-      >
-        <v-tab v-for="item in items" :key="item.tab">
-          {{ item.tab }}
-        </v-tab>
-      </v-tabs>
-      <v-tabs-items v-model="tab" dark>
+      <v-tabs-items v-model="tab">
         <v-tab-item v-for="item in items" :key="item.tab">
           <component :is="item.component" />
         </v-tab-item>

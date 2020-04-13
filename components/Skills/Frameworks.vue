@@ -28,6 +28,10 @@ export default {
       {
         name: 'Bootstrap 4',
         value: '6'
+      },
+      {
+        name: 'Entity',
+        value: '6'
       }
 
     ]

@@ -1,22 +1,9 @@
 <template>
   <div>
-    <p>Test Build</p>
-    <v-row align="center" justify="center">
-      <Project />
-    </v-row>
-    <v-row align="center" justify="center">
-      <Project />
-    </v-row>
-    <v-row align="center" justify="center">
-      <Project />
-    </v-row>
-
-    <v-row align="center" justify="center">
-      <Project />
-    </v-row>
-    <v-row>
+    <v-row justify="center" align="center">
       <TabSkills />
     </v-row>
+    <Project />
   </div>
 </template>
 

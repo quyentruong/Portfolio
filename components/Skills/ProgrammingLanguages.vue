@@ -36,6 +36,10 @@ export default {
       {
         name: 'Java',
         value: '5'
+      },
+      {
+        name: 'SQL/MySQL',
+        value: '5'
       }
     ]
   })
