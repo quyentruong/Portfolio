@@ -25,9 +25,9 @@ export default {
   name: 'GeneralTabItem',
   props: {
     items: {
-      type: Object,
+      type: Array,
       default () {
-        return {}
+        return []
       }
     }
   },

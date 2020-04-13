@@ -26,7 +26,7 @@
 export default {
   data () {
     return {
-      title: 'Quyen Truong Portfolio'
+      title: 'Quyen Truong Portfolio ' + this.$vuetify.breakpoint.name
     }
   }
 }

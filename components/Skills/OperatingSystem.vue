@@ -11,15 +11,15 @@ export default {
     items: [
       {
         name: 'Windows',
-        value: '8'
+        value: 8
       },
       {
         name: 'Linux',
-        value: '7'
+        value: 7
       },
       {
         name: 'MacOS',
-        value: '7'
+        value: 7
       }
     ]
   })

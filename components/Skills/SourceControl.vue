@@ -11,15 +11,15 @@ export default {
     items: [
       {
         name: 'Github',
-        value: '8'
+        value: 8
       },
       {
         name: 'Azure DevOps',
-        value: '6'
+        value: 6
       },
       {
         name: 'Bitbucket',
-        value: '5'
+        value: 5
       }
     ]
   })

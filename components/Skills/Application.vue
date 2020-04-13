@@ -11,27 +11,27 @@ export default {
     items: [
       {
         name: 'API',
-        value: '7'
+        value: 7
       },
       {
         name: 'Mobile Android',
-        value: '4'
+        value: 4
       },
       {
         name: 'Website',
-        value: '6'
+        value: 6
       },
       {
         name: 'MVC Net Core',
-        value: '7'
+        value: 7
       },
       {
         name: 'UI',
-        value: '4'
+        value: 4
       },
       {
         name: 'UX',
-        value: '4'
+        value: 4
       }
     ]
   })

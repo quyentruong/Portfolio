@@ -1,35 +1,69 @@
 <template>
   <div>
-    <v-row v-for="i in Math.ceil(projects.length/projectPerRow)" :key="i*1.083">
-      <v-col v-for="j in projectPerRow" :key="j*3.083">
+    <v-row v-for="i in Math.ceil(projects.length/projectPerRow())" :key="i*1.083">
+      <v-col v-for="j in projectPerRow()" :key="j*3.083">
         <v-card
           v-if="indexComputed(i,j) < projects.length"
           max-width="500"
           class="mx-auto"
         >
           <v-list-item>
+            <v-list-item-avatar v-if="project(i,j).avatar" color="white">
+              <v-img
+                :src="project(i,j).avatar"
+              />
+            </v-list-item-avatar>
             <v-list-item-content>
               <v-list-item-title class="headline">
-                {{ projects[indexComputed(i,j)].title }}
+                {{ project(i,j).title }}
               </v-list-item-title>
-              <v-list-item-subtitle>{{ projects[indexComputed(i,j)].subtitle }}</v-list-item-subtitle>
-              <v-list-item-subtitle>{{ projects[indexComputed(i,j)].subtitle2 }}</v-list-item-subtitle>
+              <v-list-item-subtitle>{{ project(i,j).subtitle }}</v-list-item-subtitle>
+              <v-list-item-subtitle>{{ project(i,j).subtitle2 }}</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
+
+          <v-img
+            v-if="project(i,j).frontpage"
+            :src="project(i,j).frontpage"
+            height="194"
+          />
+
           <v-card-text>
-            {{ projects[indexComputed(i,j)].text }}
+            {{ project(i,j).text }}
           </v-card-text>
 
           <v-card-actions>
             <v-btn
-              v-if="projects[indexComputed(i,j)].link"
+              v-if="project(i,j).link && typeof (project(i,j).link) === 'string'"
               text
               color="deep-purple accent-4"
-              :href="projects[indexComputed(i,j)].link"
+              :href="project(i,j).link"
               target="_blank"
             >
               Link
             </v-btn>
+            <v-menu v-else>
+              <template v-slot:activator="{ on }">
+                <v-btn
+                  text
+                  color="deep-purple accent-4"
+                  v-on="on"
+                >
+                  Links
+                </v-btn>
+              </template>
+              <v-list>
+                <v-list-item v-for="link in project(i,j).link" :key="link+i*j*2.034">
+                  <v-btn
+                    text
+                    :href="link"
+                    target="_blank"
+                  >
+                    {{ link }}
+                  </v-btn>
+                </v-list-item>
+              </v-list>
+            </v-menu>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -41,16 +75,29 @@
 export default {
   name: 'Project',
   data: () => ({
-    projectPerRow: 3,
+    projectPerRow () {
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs':
+          return 1
+        case 'sm':
+          return 2
+        default:
+          return 3
+      }
+    },
     projects: [
       {
+        avatar: '/avatar/mudbay.png',
+        frontpage: '/frontpage/mudbay.png',
         title: 'Mudbay',
         subtitle: 'PHP, Vue',
         subtitle2: 'WordPress',
         text: 'Create PHP API to cache data from SmartSheet to MySQL. Create four pages: ‘stores’, ‘store’, ‘events’, ‘brands’ by using Vue. Then implement these pages to existing WordPress. Built data driven templates that read data from smartsheets. Also mention that you built an integration with smartsheets that used custom built caching.',
-        link: 'http://mudbay.com/'
+        link: ['http://mudbay.com/', 'https://www.mudbay.com/stores/', 'https://www.mudbay.com/events/', 'https://www.mudbay.com/cat-brands-we-carry/', 'https://www.mudbay.com/dog-brands-we-carry/']
       },
       {
+        avatar: '/avatar/activ.ico',
+        frontpage: '/frontpage/activ.jpg',
         title: 'ACTiV',
         subtitle: 'C#, HTML, JavaScript, CSS',
         subtitle2: 'MVC Net Core, BootStrap 4',
@@ -58,6 +105,8 @@ export default {
         link: 'http://www.goactiv.org/'
       },
       {
+        avatar: '/avatar/connectmyvariant.ico',
+        frontpage: '/frontpage/connectmyvariant.png',
         title: 'ConnectMyVariant',
         subtitle: 'PHP, HTML, JavaScript, CSS, MySQL',
         subtitle2: 'Laravel, NuxtJs, Vuetify',
@@ -65,6 +114,8 @@ export default {
         link: 'http://connectmyvariant.org/'
       },
       {
+        avatar: '',
+        frontpage: '/frontpage/populationss.png',
         title: 'Population Screening Study',
         subtitle: 'C#, HTML, JavaScript, CSS',
         subtitle2: 'MVC Net Core, BootStrap 4',
@@ -72,6 +123,8 @@ export default {
         link: 'https://docker331.herokuapp.com/Home/'
       },
       {
+        avatar: '',
+        frontpage: '/frontpage/fisherman.jpg',
         title: 'Fishermen',
         subtitle: 'C#, HTML, JavaScript, CSS, SQL',
         subtitle2: 'NuxtJS, API NetCore, Vuetify',
@@ -79,6 +132,8 @@ export default {
         link: 'https://fishermen.azurewebsites.net/'
       },
       {
+        avatar: '',
+        frontpage: '/frontpage/informationgather.jpg',
         title: 'Information Gather',
         subtitle: 'C#',
         subtitle2: 'Xamarin Android',
@@ -87,22 +142,12 @@ export default {
       }
     ]
   }),
-  created () {
-    switch (this.$vuetify.breakpoint.name) {
-      case 'xs':
-        this.projectPerRow = 1
-        break
-      case 'sm':
-        this.projectPerRow = 2
-        break
-      default:
-        this.projectPerRow = 3
-    }
-  },
-
   methods: {
     indexComputed (i, j) {
-      return (j - 1) + (i - 1) * this.projectPerRow
+      return (j - 1) + (i - 1) * this.projectPerRow()
+    },
+    project (i, j) {
+      return this.projects[this.indexComputed(i, j)]
     }
   }
 }

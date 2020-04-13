@@ -10,19 +10,19 @@ export default {
     items: [
       {
         name: 'Vietnamese',
-        value: '10'
+        value: 10
       },
       {
         name: 'English Speaking',
-        value: '6'
+        value: 6
       },
       {
         name: 'English Reading',
-        value: '8'
+        value: 8
       },
       {
         name: 'English Writing',
-        value: '7'
+        value: 7
       }
     ]
   })
