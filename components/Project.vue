@@ -64,6 +64,8 @@
                 </v-list-item>
               </v-list>
             </v-menu>
+            <v-spacer />
+            <Showcase />
           </v-card-actions>
         </v-card>
       </v-col>
@@ -74,9 +76,11 @@
 <script>
 
 import { routerOptions } from '../.nuxt/router'
+import Showcase from './Showcase'
 
 export default {
   name: 'Project',
+  components: { Showcase },
   data: () => ({
     projectPerRow () {
       switch (this.$vuetify.breakpoint.name) {
