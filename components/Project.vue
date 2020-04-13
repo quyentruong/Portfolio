@@ -87,6 +87,18 @@ export default {
       }
     ]
   }),
+  created () {
+    switch (this.$vuetify.breakpoint.name) {
+      case 'xs':
+        this.projectPerRow = 1
+        break
+      case 'sm':
+        this.projectPerRow = 2
+        break
+      default:
+        this.projectPerRow = 3
+    }
+  },
 
   methods: {
     indexComputed (i, j) {
