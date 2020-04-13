@@ -10,7 +10,7 @@
           <v-list-item>
             <v-list-item-avatar v-if="project(i,j).avatar" color="white">
               <v-img
-                :src="project(i,j).avatar"
+                :src="hostname() + project(i,j).avatar"
               />
             </v-list-item-avatar>
             <v-list-item-content>
@@ -24,7 +24,7 @@
 
           <v-img
             v-if="project(i,j).frontpage"
-            :src="project(i,j).frontpage"
+            :src="hostname() + project(i,j).frontpage"
             height="194"
           />
 
@@ -72,6 +72,9 @@
 </template>
 
 <script>
+
+import { routerOptions } from '../.nuxt/router'
+
 export default {
   name: 'Project',
   data: () => ({
@@ -87,8 +90,8 @@ export default {
     },
     projects: [
       {
-        avatar: '/avatar/mudbay.png',
-        frontpage: '/frontpage/mudbay.png',
+        avatar: 'avatar/mudbay.png',
+        frontpage: 'frontpage/mudbay.png',
         title: 'Mudbay',
         subtitle: 'PHP, Vue',
         subtitle2: 'WordPress',
@@ -96,8 +99,8 @@ export default {
         link: ['http://mudbay.com/', 'https://www.mudbay.com/stores/', 'https://www.mudbay.com/events/', 'https://www.mudbay.com/cat-brands-we-carry/', 'https://www.mudbay.com/dog-brands-we-carry/']
       },
       {
-        avatar: '/avatar/activ.ico',
-        frontpage: '/frontpage/activ.jpg',
+        avatar: 'avatar/activ.ico',
+        frontpage: 'frontpage/activ.jpg',
         title: 'ACTiV',
         subtitle: 'C#, HTML, JavaScript, CSS',
         subtitle2: 'MVC Net Core, BootStrap 4',
@@ -105,8 +108,8 @@ export default {
         link: 'http://www.goactiv.org/'
       },
       {
-        avatar: '/avatar/connectmyvariant.ico',
-        frontpage: '/frontpage/connectmyvariant.png',
+        avatar: 'avatar/connectmyvariant.ico',
+        frontpage: 'frontpage/connectmyvariant.png',
         title: 'ConnectMyVariant',
         subtitle: 'PHP, HTML, JavaScript, CSS, MySQL',
         subtitle2: 'Laravel, NuxtJs, Vuetify',
@@ -115,7 +118,7 @@ export default {
       },
       {
         avatar: '',
-        frontpage: '/frontpage/populationss.png',
+        frontpage: 'frontpage/populationss.png',
         title: 'Population Screening Study',
         subtitle: 'C#, HTML, JavaScript, CSS',
         subtitle2: 'MVC Net Core, BootStrap 4',
@@ -124,7 +127,7 @@ export default {
       },
       {
         avatar: '',
-        frontpage: '/frontpage/fisherman.jpg',
+        frontpage: 'frontpage/fisherman.jpg',
         title: 'Fishermen',
         subtitle: 'C#, HTML, JavaScript, CSS, SQL',
         subtitle2: 'NuxtJS, API NetCore, Vuetify',
@@ -133,7 +136,7 @@ export default {
       },
       {
         avatar: '',
-        frontpage: '/frontpage/informationgather.jpg',
+        frontpage: 'frontpage/informationgather.jpg',
         title: 'Information Gather',
         subtitle: 'C#',
         subtitle2: 'Xamarin Android',
@@ -148,6 +151,9 @@ export default {
     },
     project (i, j) {
       return this.projects[this.indexComputed(i, j)]
+    },
+    hostname () {
+      return routerOptions.base
     }
   }
 }
