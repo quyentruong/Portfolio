@@ -2,7 +2,7 @@
   <div class="text-center">
     <v-dialog
       v-model="dialog"
-      :width="$vuetify.breakpoint.width/100*44"
+      :width="width()"
     >
       <template v-slot:activator="{ on }">
         <v-btn
@@ -16,9 +16,10 @@
 
       <v-carousel
         cycle
-        :height="$vuetify.breakpoint.height/100*90"
-        hide-delimiter-background
-        show-arrows-on-hover
+        :height="height()"
+        interval="5000"
+        progress
+        show-arrows
       >
         <v-carousel-item
           v-for="(image, i) in images"
@@ -44,20 +45,20 @@ export default {
   },
   data: () => ({
     dialog: false,
-    colors: [
-      'indigo',
-      'warning',
-      'pink darken-2',
-      'red lighten-1',
-      'deep-purple accent-4'
-    ],
-    slides: [
-      'First',
-      'Second',
-      'Third',
-      'Fourth',
-      'Fifth'
-    ]
+    width () {
+      if (this.$vuetify.breakpoint.width > this.$vuetify.breakpoint.height) {
+        return this.$vuetify.breakpoint.width / 100 * 44
+      } else {
+        return this.$vuetify.breakpoint.width / 100 * 90
+      }
+    },
+    height () {
+      if (this.$vuetify.breakpoint.width > this.$vuetify.breakpoint.height) {
+        return this.$vuetify.breakpoint.height / 100 * 90
+      } else {
+        return this.$vuetify.breakpoint.height / 100 * 60
+      }
+    }
   })
 }
 </script>
