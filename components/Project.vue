@@ -9,10 +9,10 @@
         >
           <v-list-item>
             <v-list-item-avatar v-if="project(i,j).avatar.length > 0" color="white">
-              <img
-                v-lazy-load
-                :data-src="require(`../assets/avatar/${project(i,j).avatar}`)"
-              >
+              <v-img
+                :src="require(`../assets/avatar/${project(i,j).avatar}`)"
+                :lazy-src="require('../assets/loading.gif')"
+              />
             </v-list-item-avatar>
             <v-list-item-content>
               <v-list-item-title class="headline">
@@ -23,14 +23,12 @@
             </v-list-item-content>
           </v-list-item>
 
-          <img
-            v-if="project(i,j).frontpage"
-            v-lazy-load
-            :data-src="require(`../assets/frontpage/${project(i,j).frontpage}`)"
+          <v-img
+            v-if="project(i,j).frontpage.length > 0"
             height="194"
-            width="500"
-            :alt="project(i,j).frontpage"
-          >
+            :src="require(`../assets/frontpage/${project(i,j).frontpage}`)"
+            :lazy-src="require('../assets/loading.gif')"
+          />
 
           <v-card-text>
             {{ project(i,j).text }}
@@ -163,7 +161,7 @@ export default {
         title: 'Information Gather',
         subtitle: 'C#',
         subtitle2: 'Xamarin Android',
-        text: "Create an Android app that collect users' information. The app can generate multiple forms then writes to csv on internal storage. It supports function to send email and local authentication to make sure no one use your app without your permission.",
+        text: 'Create an Android app that collect users\' information. The app can generate multiple forms then writes to csv on internal storage. It supports function to send email and local authentication to make sure no one use your app without your permission.',
         link: 'https://photos.app.goo.gl/uSErTi7Ycc3ogJDc7',
         showcase: 'informationgather'
       }

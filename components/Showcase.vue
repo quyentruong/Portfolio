@@ -25,7 +25,12 @@
           v-for="(image, i) in filterImage(images)"
           :key="i"
         >
-          <img v-lazy-load :data-src="require(`../assets/showcase/${image.pathShort}`)" :width="width()" :height="height()">
+          <v-img
+            :src="require(`../assets/showcase/${image.pathShort}`)"
+            :lazy-src="require('../assets/loading.gif')"
+            :max-height="height()"
+            contain
+          />
           <!--          <v-img :max-width="width()" :max-height="height()" contain :src="image.pathLong" />-->
         </v-carousel-item>
       </v-carousel>
