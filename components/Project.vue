@@ -153,7 +153,8 @@ export default {
         subtitle: 'C#, HTML, JavaScript, CSS, SQL',
         subtitle2: 'NuxtJS, API NetCore, Vuetify',
         text: 'Created Front End Vue framework. Then connect to .Net Core WebAPI to get data. Graph the best month to fish. Graph best place to fish. Write Custom Query to do filter and sort any column.',
-        link: 'https://fishermen.azurewebsites.net/'
+        link: 'https://fishermen.azurewebsites.net/',
+        showcase: 'fishermen'
       },
       {
         avatar: '',

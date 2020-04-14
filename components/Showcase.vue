@@ -51,7 +51,7 @@ export default {
     dialog: false,
     width () {
       if (this.$vuetify.breakpoint.width > this.$vuetify.breakpoint.height) {
-        return this.$vuetify.breakpoint.width / 100 * 44
+        return this.$vuetify.breakpoint.width / 100 * 80
       } else {
         return this.$vuetify.breakpoint.width / 100 * 90
       }
@@ -60,7 +60,7 @@ export default {
       if (this.$vuetify.breakpoint.width > this.$vuetify.breakpoint.height) {
         return this.$vuetify.breakpoint.height / 100 * 90
       } else {
-        return this.$vuetify.breakpoint.height / 100 * 60
+        return this.$vuetify.breakpoint.height / 100 * 80
       }
     },
     images: []
