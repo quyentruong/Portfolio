@@ -52,7 +52,8 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    'nuxt-lazy-load'
   ],
   /*
   ** vuetify module configuration

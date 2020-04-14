@@ -8,10 +8,11 @@
           class="mx-auto"
         >
           <v-list-item>
-            <v-list-item-avatar v-if="project(i,j).avatar" color="white">
-              <v-img
-                :src="hostname() + project(i,j).avatar"
-              />
+            <v-list-item-avatar v-if="project(i,j).avatar.length > 0" color="white">
+              <img
+                v-lazy-load
+                :data-src="require(`../assets/avatar/${project(i,j).avatar}`)"
+              >
             </v-list-item-avatar>
             <v-list-item-content>
               <v-list-item-title class="headline">
@@ -22,11 +23,14 @@
             </v-list-item-content>
           </v-list-item>
 
-          <v-img
+          <img
             v-if="project(i,j).frontpage"
-            :src="hostname() + project(i,j).frontpage"
+            v-lazy-load
+            :data-src="require(`../assets/frontpage/${project(i,j).frontpage}`)"
             height="194"
-          />
+            width="500"
+            :alt="project(i,j).frontpage"
+          >
 
           <v-card-text>
             {{ project(i,j).text }}
@@ -107,8 +111,8 @@ export default {
     },
     projects: [
       {
-        avatar: 'avatar/mudbay.png',
-        frontpage: 'frontpage/mudbay.png',
+        avatar: 'mudbay.png',
+        frontpage: 'mudbay.png',
         title: 'Mudbay',
         subtitle: 'PHP, Vue',
         subtitle2: 'WordPress',
@@ -117,8 +121,8 @@ export default {
         showcase: 'mudbay'
       },
       {
-        avatar: 'avatar/activ.ico',
-        frontpage: 'frontpage/activ.jpg',
+        avatar: 'activ.png',
+        frontpage: 'activ.jpg',
         title: 'ACTiV',
         subtitle: 'C#, HTML, JavaScript, CSS',
         subtitle2: 'MVC Net Core, BootStrap 4',
@@ -127,8 +131,8 @@ export default {
         showcase: 'activ'
       },
       {
-        avatar: 'avatar/connectmyvariant.ico',
-        frontpage: 'frontpage/connectmyvariant.png',
+        avatar: 'connectmyvariant.png',
+        frontpage: 'connectmyvariant.png',
         title: 'ConnectMyVariant',
         subtitle: 'PHP, HTML, JavaScript, CSS, MySQL',
         subtitle2: 'Laravel, NuxtJs, Vuetify',
@@ -137,7 +141,7 @@ export default {
       },
       {
         avatar: '',
-        frontpage: 'frontpage/populationss.png',
+        frontpage: 'populationss.png',
         title: 'Population Screening Study',
         subtitle: 'C#, HTML, JavaScript, CSS',
         subtitle2: 'MVC Net Core, BootStrap 4',
@@ -146,7 +150,7 @@ export default {
       },
       {
         avatar: '',
-        frontpage: 'frontpage/fisherman.jpg',
+        frontpage: 'fisherman.jpg',
         title: 'Fishermen',
         subtitle: 'C#, HTML, JavaScript, CSS, SQL',
         subtitle2: 'NuxtJS, API NetCore, Vuetify',
@@ -155,7 +159,7 @@ export default {
       },
       {
         avatar: '',
-        frontpage: 'frontpage/informationgather.jpg',
+        frontpage: 'informationgather.jpg',
         title: 'Information Gather',
         subtitle: 'C#',
         subtitle2: 'Xamarin Android',
@@ -174,6 +178,9 @@ export default {
     },
     hostname () {
       return routerOptions.base
+    },
+    getImage (path) {
+      return require(path)
     }
   }
 }

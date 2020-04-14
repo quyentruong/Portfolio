@@ -23,13 +23,13 @@
 </template>
 
 <script>
-import { routerOptions } from '../.nuxt/router'
+// import { routerOptions } from '../.nuxt/router'
 
 export default {
   data () {
     return {
       title: 'Quyen Truong Portfolio ' + this.$vuetify.breakpoint.name,
-      backgroundURL: routerOptions.base + 'background.png'
+      backgroundURL: require('../assets/background.png')
     }
   }
 }

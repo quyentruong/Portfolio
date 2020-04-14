@@ -25,7 +25,8 @@
           v-for="(image, i) in filterImage(images)"
           :key="i"
         >
-          <v-img :max-width="width()" :max-height="height()" contain :src="image.pathLong" />
+          <img v-lazy-load :data-src="require(`../assets/showcase/${image.pathShort}`)" :width="width()" :height="height()">
+          <!--          <v-img :max-width="width()" :max-height="height()" contain :src="image.pathLong" />-->
         </v-carousel-item>
       </v-carousel>
     </v-dialog>
@@ -60,11 +61,11 @@ export default {
     images: []
   }),
   mounted () {
-    this.importAll(require.context('../static/showcase/', true, /\.png|.jpg$/))
+    this.importAll(require.context('../assets/showcase/', true, /\.png|.jpg$/))
   },
   methods: {
     importAll (r) {
-      r.keys().forEach(key => (this.images.push({ pathLong: r(key), pathShort: key })))
+      r.keys().forEach(key => (this.images.push({ pathLong: r(key), pathShort: key.replace('./', '') })))
     },
     filterImage (images) {
       return images.filter(image => image.pathShort.includes(this.folder))
