@@ -135,7 +135,8 @@ export default {
         subtitle: 'PHP, HTML, JavaScript, CSS, MySQL',
         subtitle2: 'Laravel, NuxtJs, Vuetify',
         text: 'Designed relational database. Used Laravel’s migration tool to create tables. Implemented API in Laravel to allow database functionality (read, create, delete). Implemented Nuxt SPA to create datatable and migrated it to existing Laravel project. Created HTML datatable to improve Search Engine Optimization (SEO). Created a NodeJS script to generate sitemap. Submitted final project to Google Search Console to improve SEO.',
-        link: 'http://connectmyvariant.org/'
+        link: 'http://connectmyvariant.org/',
+        showcase: 'connectmyvariant'
       },
       {
         avatar: '',
@@ -144,7 +145,8 @@ export default {
         subtitle: 'C#, HTML, JavaScript, CSS',
         subtitle2: 'MVC Net Core, BootStrap 4',
         text: 'Created .Net Core MVC Website. Implemented Entity Framework for SQL and created Administration Management page to allow moderators to add participant results. Designed the website to send emails to participants via a link with a generated ID for participants to allow them check their status.',
-        link: 'https://docker331.herokuapp.com/Home/'
+        link: 'https://docker331.herokuapp.com/Home/',
+        showcase: 'populationss'
       },
       {
         avatar: '',
