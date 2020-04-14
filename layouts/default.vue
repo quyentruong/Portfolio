@@ -8,7 +8,7 @@
     >
       <v-toolbar-title v-text="title" />
     </v-app-bar>
-    <v-content class="background">
+    <v-content class="background" :style="{ backgroundImage: `url(${backgroundURL})` }">
       <v-container>
         <nuxt />
       </v-container>
@@ -23,17 +23,19 @@
 </template>
 
 <script>
+import { routerOptions } from '../.nuxt/router'
+
 export default {
   data () {
     return {
-      title: 'Quyen Truong Portfolio ' + this.$vuetify.breakpoint.name
+      title: 'Quyen Truong Portfolio ' + this.$vuetify.breakpoint.name,
+      backgroundURL: routerOptions.base + 'background.png'
     }
   }
 }
 </script>
 <style>
   .background {
-    background-image: url('https://www.nasa.gov/sites/default/files/thumbnails/image/stsci-h-p2001a-m-2000x1500_0.png');
     background-repeat: round;
   }
   .centerElement {
