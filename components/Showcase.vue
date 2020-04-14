@@ -2,7 +2,7 @@
   <div class="text-center">
     <v-dialog
       v-model="dialog"
-      :width="$vuetify.breakpoint.width"
+      :width="$vuetify.breakpoint.width/100*44"
     >
       <template v-slot:activator="{ on }">
         <v-btn
@@ -16,28 +16,15 @@
 
       <v-carousel
         cycle
-        :height="$vuetify.breakpoint.height/100*70"
+        :height="$vuetify.breakpoint.height/100*90"
         hide-delimiter-background
         show-arrows-on-hover
       >
         <v-carousel-item
-          v-for="(slide, i) in slides"
+          v-for="(image, i) in images"
           :key="i"
         >
-          <v-sheet
-            :color="colors[i]"
-            height="100%"
-          >
-            <v-row
-              class="fill-height"
-              align="center"
-              justify="center"
-            >
-              <div class="display-3">
-                {{ slide }} Slide
-              </div>
-            </v-row>
-          </v-sheet>
+          <v-img :src="image" />
         </v-carousel-item>
       </v-carousel>
     </v-dialog>
@@ -47,6 +34,14 @@
 <script>
 export default {
   name: 'Showcase',
+  props: {
+    images: {
+      type: Array,
+      default () {
+        return []
+      }
+    }
+  },
   data: () => ({
     dialog: false,
     colors: [

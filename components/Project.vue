@@ -65,7 +65,7 @@
               </v-list>
             </v-menu>
             <v-spacer />
-            <Showcase />
+            <Showcase v-if="project(i,j).showcase" :images="project(i,j).showcase" />
           </v-card-actions>
         </v-card>
       </v-col>
@@ -100,7 +100,9 @@ export default {
         subtitle: 'PHP, Vue',
         subtitle2: 'WordPress',
         text: 'Create PHP API to cache data from SmartSheet to MySQL. Create four pages: ‘stores’, ‘store’, ‘events’, ‘brands’ by using Vue. Then implement these pages to existing WordPress. Built data driven templates that read data from smartsheets. Also mention that you built an integration with smartsheets that used custom built caching.',
-        link: ['http://mudbay.com/', 'https://www.mudbay.com/stores/', 'https://www.mudbay.com/events/', 'https://www.mudbay.com/cat-brands-we-carry/', 'https://www.mudbay.com/dog-brands-we-carry/']
+        link: ['http://mudbay.com/', 'https://www.mudbay.com/stores/', 'https://www.mudbay.com/events/', 'https://www.mudbay.com/cat-brands-we-carry/', 'https://www.mudbay.com/dog-brands-we-carry/'],
+        showcase: ['https://lh3.googleusercontent.com/QBYOkT7FVmKkhkk8BGEYkH3y0BMap50QcUG6H-YAwmDWTVl1ZF4mYKfVmX29dUb_8dB_ujfWAi2d6_DNRVIKhNfpexXOKn-zkG54q6EvYwtlwVqvwFVFwkr3yPsi8pJhPZT4QHuCIpErqlwXYOD88B9L9Pn4GSSPx4_zk3pp_71C1Hqjo8cb3zjOXtZ5F0wFvBvfk7BfhcZSQzwZiW9tr3eNh3zWyyxsy3CfhrTkHEhLG5o4fbk13J9hb4laNkc11939sEOZslBj_e1hsanlcHMHtObVcJ1oF056HDxdhe15RDiCXYof_1Hs8jeyQ9opgeyIvg604V9D-NUqTs0EraGiwhY0X2-s1DxWqU3zxBGpkb7DDTvCNzap3rv7fLUWcYez0DviNij7g0xteineUHNPdVT3410isEWKEL-zXj4_pPXjeyd6lKeGTn936XCgY8eWXVaAN2u8Wwt_BXPzxKi3UKSAo9B4TQr7-N-sKXOKpbB269kqx7RbebOuQ0j7AQg39Pz5EZeqg_XDeME_EJunFKj7HqyP_Z0OA-9HWDiGhMdU2ewqImKruNyResqWmA8i1oFwRW9dNbRSqnpQ-8RAGo_KpCFrJDnR6R4PEmXvYZgHea3ItE1W_CYsMnx8uHQUKPTMkDiw5HrJRobOAMYHBML0z551rVW_EsGFn0UTXTfaPkLKAlDtgm7z=w931-h945-no',
+          'https://lh3.googleusercontent.com/WyBiaBEksChHr5bM-Lv_eizdHhSTX0lD0Zm6yY_V_X2WdLsEkt-pk3Q3BTO-J0HsPVAlWt5tHtIWfa0E7dC6QNUYejSIM3v72GER6tqrbAOfYTtJfT74IAuIp6nauyX527LA89YJN8toGZO5qeAkde3zb-nX5uzU2AwsiLYgfSOtlru34CLRmFwQYgzgPJWsT533fmOCB6Lwf0Wv8dCQvSSjbmvqiIjKbpQFuOlW4Iv1iY36umm1ajF5k4Yt-rI86xcf0D5D49waau_4arAKPMDebAxTDV1nFR_NgnxJlYY9zPPlOcOtEXgdOIq_5QQ_THtoYR7ssm1JFpOV6zcSJkBxPkTlFlQH4opgZ_flOpEyhXf0nSnPsVMLK5iLd1Z_QB-nk8GWvwRHpQ_dGmwmRglB6nV3pedNXdzEO2s5ev9WKawQAI8q9_p4pUb48_16sgGMCPEvzMo1TJuWE92O8RjCl3t1QVi2dugxt0KdXZsgqGYG6bFcliSDAzdEYDQPGm-_BTzZcyOnMhJK8jTxvTjaxysTZVkWd7Me9PKcb3Mui8QwINIaMA8qYdkHpue4APi_ZNMvNiRs8hWWFNtG_2zcKLFJULJAAVfFmH4EWH73tz3m09DT6Fi2DYccwwoXWwcfYRlGmZLKNv1s09b8gtJDnP0N807X7ULfgWuW1mSkRDe08tg12CoPuTCA=w851-h944-no']
       },
       {
         avatar: 'avatar/activ.ico',
