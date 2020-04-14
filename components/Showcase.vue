@@ -22,10 +22,10 @@
         show-arrows
       >
         <v-carousel-item
-          v-for="(image, i) in images"
+          v-for="(image, i) in filterImage(images)"
           :key="i"
         >
-          <v-img :src="image" />
+          <v-img :max-width="width()" :max-height="height()" contain :src="image.pathLong" />
         </v-carousel-item>
       </v-carousel>
     </v-dialog>
@@ -36,11 +36,9 @@
 export default {
   name: 'Showcase',
   props: {
-    images: {
-      type: Array,
-      default () {
-        return []
-      }
+    folder: {
+      type: String,
+      default: 'mudbay'
     }
   },
   data: () => ({
@@ -58,8 +56,20 @@ export default {
       } else {
         return this.$vuetify.breakpoint.height / 100 * 60
       }
+    },
+    images: []
+  }),
+  mounted () {
+    this.importAll(require.context('../static/showcase/', true, /\.png|.jpg$/))
+  },
+  methods: {
+    importAll (r) {
+      r.keys().forEach(key => (this.images.push({ pathLong: r(key), pathShort: key })))
+    },
+    filterImage (images) {
+      return images.filter(image => image.pathShort.includes(this.folder))
     }
-  })
+  }
 }
 </script>
 

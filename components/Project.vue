@@ -65,7 +65,7 @@
               </v-list>
             </v-menu>
             <v-spacer />
-            <Showcase v-if="project(i,j).showcase" :images="project(i,j).showcase" />
+            <Showcase v-if="project(i,j).showcase" :folder="project(i,j).showcase" />
           </v-card-actions>
         </v-card>
       </v-col>
@@ -114,7 +114,7 @@ export default {
         subtitle2: 'WordPress',
         text: 'Create PHP API to cache data from SmartSheet to MySQL. Create four pages: ‘stores’, ‘store’, ‘events’, ‘brands’ by using Vue. Then implement these pages to existing WordPress. Built data driven templates that read data from smartsheets. Also mention that you built an integration with smartsheets that used custom built caching.',
         link: ['http://mudbay.com/', 'https://www.mudbay.com/stores/', 'https://www.mudbay.com/events/', 'https://www.mudbay.com/cat-brands-we-carry/', 'https://www.mudbay.com/dog-brands-we-carry/'],
-        showcase: ['mudbay']
+        showcase: 'mudbay'
       },
       {
         avatar: 'avatar/activ.ico',
@@ -123,7 +123,8 @@ export default {
         subtitle: 'C#, HTML, JavaScript, CSS',
         subtitle2: 'MVC Net Core, BootStrap 4',
         text: 'Migrate webforms template to MVC pattern. Implement Entity Framework for SQL. Implement Azure Ad Directory for Authentication. Implement DataTables.net for administration (View, Delete, Print, Add Comment). Implement OneClick to send email to users by using Azure Logic App.',
-        link: 'http://www.goactiv.org/'
+        link: 'http://www.goactiv.org/',
+        showcase: 'activ'
       },
       {
         avatar: 'avatar/connectmyvariant.ico',
@@ -159,19 +160,12 @@ export default {
         subtitle: 'C#',
         subtitle2: 'Xamarin Android',
         text: "Create an Android app that collect users' information. The app can generate multiple forms then writes to csv on internal storage. It supports function to send email and local authentication to make sure no one use your app without your permission.",
-        link: 'https://photos.app.goo.gl/uSErTi7Ycc3ogJDc7'
+        link: 'https://photos.app.goo.gl/uSErTi7Ycc3ogJDc7',
+        showcase: 'informationgather'
       }
-    ],
-    images: []
+    ]
   }),
-  mounted () {
-    this.importAll(require.context('../static/showcase/mudbay/', true, /\.png|.jpg$/))
-    console.log(this.images)
-  },
   methods: {
-    importAll (r) {
-      r.keys().forEach(key => (this.images.push({ pathLong: r(key), pathShort: key })))
-    },
     indexComputed (i, j) {
       return (j - 1) + (i - 1) * this.projectPerRow()
     },
