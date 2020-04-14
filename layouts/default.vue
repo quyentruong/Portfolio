@@ -2,8 +2,6 @@
   <v-app dark>
     <v-app-bar
       clipped-left
-      fixed
-      app
       scroll-off-screen
     >
       <v-toolbar-title v-text="title" />
@@ -25,10 +23,7 @@
     >
       <v-icon>mdi-chevron-up</v-icon>
     </v-btn>
-    <v-footer
-      fixed
-      app
-    >
+    <v-footer>
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
