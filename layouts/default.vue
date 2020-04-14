@@ -13,6 +13,18 @@
         <nuxt />
       </v-container>
     </v-content>
+    <v-btn
+      v-show="fab"
+      v-scroll="onScroll"
+      fab
+      fixed
+      bottom
+      right
+      color="primary"
+      @click="toTop"
+    >
+      <v-icon>mdi-chevron-up</v-icon>
+    </v-btn>
     <v-footer
       fixed
       app
@@ -28,8 +40,19 @@
 export default {
   data () {
     return {
-      title: 'Quyen Truong Portfolio ' + this.$vuetify.breakpoint.name,
-      backgroundURL: require('../assets/background.png')
+      title: 'Quyen Truong Portfolio',
+      backgroundURL: require('../assets/background.png'),
+      fab: false
+    }
+  },
+  methods: {
+    onScroll (e) {
+      if (typeof window === 'undefined') { return }
+      const top = window.pageYOffset || e.target.scrollTop || 0
+      this.fab = top > 20
+    },
+    toTop () {
+      this.$vuetify.goTo(0)
     }
   }
 }
